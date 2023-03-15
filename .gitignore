@@ -1,0 +1,11 @@
+node_modules/
+
+# Output directory
+dist/
+
+# Cache directory
+.chooks/
+
+# dotenv environment variable files
+.env
+.env*.local

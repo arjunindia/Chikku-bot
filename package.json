@@ -1,0 +1,18 @@
+{
+  "name": "chikku",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "chooks",
+    "start": "node dist",
+    "build": "chooks build",
+    "register": "chooks register"
+  },
+  "dependencies": {
+    "chooksie": "^2.4.1",
+    "discord.js": "^13.7.0"
+  },
+  "devDependencies": {
+    "@chookscord/cli": "^2.4.1"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ES6"
+    ],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "noEmit": true
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    ".chooks"
+  ]
+}
