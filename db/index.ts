@@ -38,8 +38,5 @@ Points.init(
 
 export const chooksOnLoad = defineOnLoad(async () => {
   // Sync changes every time we make changes to the file.
-  await sequelize.sync({
-    // Optionally, we can choose to always clear the database during development.
-    force: process.env.NODE_ENV !== "production",
-  });
+  await sequelize.sync();
 });

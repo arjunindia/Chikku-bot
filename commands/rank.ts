@@ -1,6 +1,6 @@
 import { defineSlashCommand } from "chooksie";
 import { Op } from "sequelize";
-import { createCanvas, loadImage } from "canvas";
+import { createCanvas, loadImage, registerFont } from "canvas";
 
 async function db() {
   const { Points } = await import("../db");
@@ -42,9 +42,15 @@ export default defineSlashCommand({
     const canvas = createCanvas(700, 250);
     const c = canvas.getContext("2d");
 
+    // Register a font
+    registerFont("assets/fonts/Poppins-Bold.ttf", {
+      family: "Poppins",
+    });
+
     // Draw the background
-    c.fillStyle = "#7289DA";
-    c.fillRect(0, 0, canvas.width, canvas.height);
+    loadImage("assets/bg.jpg").then((image) => {
+      c.drawImage(image, 0, 0, canvas.width, canvas.height);
+    });
 
     // Draw the user's avatar
     const avatar = await loadImage(
@@ -60,9 +66,9 @@ export default defineSlashCommand({
     //remove the clip so the text can be drawn
     c.restore();
     // Draw the user's rank
-    c.font = "bold 50px sans-serif";
+    c.font = "bold 50px Poppins";
     c.fillStyle = "#FFFFFF";
-    c.fillText(`Rank : #${rank + 1}`, 250, 100);
+    c.fillText(`Rank : #${rank + 1}`, 300, 100);
 
     //add a BORDER to the avatar
     c.beginPath();
@@ -75,7 +81,7 @@ export default defineSlashCommand({
 
     // Draw the user's points
     c.fillStyle = "#FFFFFF";
-    c.fillText(`${points.points} points`, 250, 200);
+    c.fillText(`${points.points} points`, 300, 200);
 
     await ctx.interaction.editReply({
       files: [
