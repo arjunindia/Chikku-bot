@@ -9,3 +9,6 @@ dist/
 # dotenv environment variable files
 .env
 .env*.local
+
+# Sqlite database
+*.sqlite
