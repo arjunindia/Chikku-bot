@@ -10,16 +10,16 @@ export default defineSlashCommand({
   description: "View the points leaderboard",
   setup: db,
   async execute(ctx) {
-    const points = await this.findAll({
+    let points = await this.findAll({
       order: [["points", "DESC"]],
       limit: 10,
     });
-    //remove any id equal to the string null
-    points.filter((p: { user: string }) => p.user !== "null");
 
+    //remove ids equal to null
     const embed = {
       title: "Points Leaderboard",
       description: points
+        .filter((p: { user: string; points: number }) => p.user !== null)
         .map(
           (p: { user: string; points: number }) => `<@${p.user}>: ${p.points}`
         )

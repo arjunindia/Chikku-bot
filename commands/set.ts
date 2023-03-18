@@ -59,7 +59,7 @@ export default defineSlashCommand({
     }
 
     await ctx.interaction.reply({
-      content: `Rewarded <@${
+      content: `Set <@${
         ctx.interaction.options.getUser("to")!.id
       }> with ${ctx.interaction.options.getInteger("points")!} points`,
       ephemeral: true,
@@ -71,13 +71,13 @@ export default defineSlashCommand({
   options: [
     {
       name: "to",
-      description: "The user to reward",
+      description: "The user to set points for",
       type: "USER",
       required: true,
     },
     {
       name: "points",
-      description: "The amount of points to reward",
+      description: "The amount of points to set",
       type: "INTEGER",
       required: true,
     },
