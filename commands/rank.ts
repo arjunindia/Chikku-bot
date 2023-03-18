@@ -42,11 +42,6 @@ export default defineSlashCommand({
     const canvas = createCanvas(800, 250);
     const c = canvas.getContext("2d");
 
-    // Register a font
-    registerFont("assets/fonts/Poppins-Bold.ttf", {
-      family: "Poppins",
-    });
-
     // Draw the background
     loadImage("assets/bg.jpg").then((image) => {
       c.drawImage(image, 0, 0, canvas.width, canvas.height);

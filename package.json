@@ -19,6 +19,7 @@
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
-    "@chookscord/cli": "^2.4.1"
+    "@chookscord/cli": "^2.4.1",
+    "chooks": "^1.13.4"
   }
 }
