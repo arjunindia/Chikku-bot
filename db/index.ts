@@ -8,7 +8,7 @@ const sequelize = new Sequelize("database", "user", "password", {
   dialect: "sqlite",
   logging: false,
   // SQLite only
-  storage: "database.sqlite",
+  storage: "/data/database.sqlite",
 });
 
 // A table for storing points for each user.

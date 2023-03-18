@@ -6,4 +6,5 @@ COPY --chown=pn:pn package*.json ./
 USER pn
 RUN npm install
 COPY --chown=pn:pn . .
-CMD npm run build && npm run register && npm run start
+RUN npm run build
+CMD npm run start

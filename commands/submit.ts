@@ -73,7 +73,7 @@ export default defineSlashCommand({
       required: true,
     },
     {
-      name: "Links",
+      name: "links",
       description: "Links to your project",
       type: "STRING",
       required: false,

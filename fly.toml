@@ -5,6 +5,10 @@ kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
+[mount]
+  source="chikkudb"
+  destination="/data"
+
 [env]
   PORT = "8080"
 

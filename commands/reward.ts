@@ -64,7 +64,7 @@ export default defineSlashCommand({
   },
   options: [
     {
-      name: "user",
+      name: "to",
       description: "The user to reward",
       type: "USER",
       required: true,
