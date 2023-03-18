@@ -14,6 +14,8 @@ export default defineSlashCommand({
       order: [["points", "DESC"]],
       limit: 10,
     });
+    //remove any id equal to the string null
+    points.filter((p: { user: string }) => p.user !== "null");
 
     const embed = {
       title: "Points Leaderboard",
