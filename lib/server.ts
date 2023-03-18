@@ -27,7 +27,7 @@ export const chooksOnLoad = defineOnLoad((ctx) => {
     return points;
   });
 
-  app.listen({ port: 8080 }, (err, address) => {
+  app.listen({ port: 8080, host: "0.0.0.0" }, (err, address) => {
     if (err) {
       ctx.logger.error(err);
       process.exit(1);

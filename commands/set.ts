@@ -7,8 +7,8 @@ async function db() {
 }
 
 export default defineSlashCommand({
-  name: "reward",
-  description: "Reward a user with points (Admin only)",
+  name: "set",
+  description: "set points of a user (Admin only)",
   setup: db,
   async execute(ctx) {
     //check if the user has the admin role
@@ -30,6 +30,7 @@ export default defineSlashCommand({
       // User already exists
       //catch errors if the error is not related to the user already existing and handle it
       if ((e as Error).name !== "SequelizeUniqueConstraintError") {
+        ctx.logger.error(e);
         return await ctx.interaction.reply({
           content: `There was an error rewarding the user`,
           ephemeral: true,
@@ -39,13 +40,18 @@ export default defineSlashCommand({
 
     // Add points to user
     try {
-      await this.increment("points", {
-        by: ctx.interaction.options.getInteger("points")!,
-        where: {
-          user: ctx.interaction.options.getUser("to")?.id,
+      await this.update(
+        {
+          points: ctx.interaction.options.getInteger("points")!,
         },
-      });
+        {
+          where: {
+            user: ctx.interaction.options.getUser("to")?.id,
+          },
+        }
+      );
     } catch (e) {
+      ctx.logger.error(e);
       return await ctx.interaction.reply({
         content: `There was an error rewarding the user`,
         ephemeral: true,
