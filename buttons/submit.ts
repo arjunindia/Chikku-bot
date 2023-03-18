@@ -14,25 +14,24 @@ export default defineButtonHandler({
       Project: string;
     } = JSON.parse(ctx.payload!);
 
-    // Add points to user
-    try {
-      await this.increment("points", {
-        by: 1,
-        where: {
-          user: payload.User,
-        },
-      });
-    } catch (e) {
-      return await ctx.interaction.reply({
-        content: `There was an error approving your project`,
-        ephemeral: true,
-      });
-    }
-
     //@ts-ignore
     if (ctx.interaction.member?.roles.cache.has(process.env.ADMIN_ROLE!)) {
+      // Add points to user
+      try {
+        await this.increment("points", {
+          by: 1,
+          where: {
+            user: payload.User,
+          },
+        });
+      } catch (e) {
+        return await ctx.interaction.reply({
+          content: `There was an error approving your project`,
+          ephemeral: true,
+        });
+      }
       await ctx.interaction.reply({
-        content: `Approved! points added to user <@${payload.User}> for project ${payload.Project}`,
+        content: `Approved! points added to user <@${payload.User}> for project ${payload.Project}!`,
         allowedMentions: {
           users: [],
         },
@@ -41,7 +40,7 @@ export default defineButtonHandler({
       await ctx.interaction.message.delete();
     } else {
       await ctx.interaction.reply({
-        content: `You do not have permission to approve projects`,
+        content: `You do not have permission to approve projects...`,
         ephemeral: true,
       });
     }

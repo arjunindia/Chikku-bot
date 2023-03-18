@@ -12,6 +12,7 @@ export default defineSlashCommand({
   async execute(ctx) {
     const points = await this.findAll({
       order: [["points", "DESC"]],
+      limit: 10,
     });
 
     const embed = {

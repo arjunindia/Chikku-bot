@@ -39,7 +39,7 @@ export default defineSlashCommand({
     });
 
     // Create the canvas
-    const canvas = createCanvas(700, 250);
+    const canvas = createCanvas(800, 250);
     const c = canvas.getContext("2d");
 
     // Register a font
@@ -65,10 +65,20 @@ export default defineSlashCommand({
     c.drawImage(avatar, 25, 25, 200, 200);
     //remove the clip so the text can be drawn
     c.restore();
+
+    // Draw the user's name and discriminator in small text
+    c.font = "20px sans-serif";
+    c.fillStyle = "#FFFFFF";
+    c.fillText(
+      `${ctx.interaction.user.username}#${ctx.interaction.user.discriminator}`,
+      300,
+      50
+    );
+
     // Draw the user's rank
     c.font = "bold 50px Poppins";
     c.fillStyle = "#FFFFFF";
-    c.fillText(`Rank : #${rank + 1}`, 300, 100);
+    c.fillText(`Rank : #${rank + 1}`, 300, 120);
 
     //add a BORDER to the avatar
     c.beginPath();

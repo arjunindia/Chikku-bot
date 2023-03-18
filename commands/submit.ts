@@ -30,9 +30,22 @@ export default defineSlashCommand({
     }
 
     await ctx.interaction.reply({
-      content: `Project Submitted! for ${ctx.interaction.options.getString(
-        `project`
-      )}`,
+      embeds: [
+        {
+          title: `Project Submission`,
+          description: `By ${ctx.interaction.user}`,
+          fields: [
+            {
+              name: `Project`,
+              value: ctx.interaction.options.getString(`project`)!,
+            },
+            {
+              name: `Links`,
+              value: ctx.interaction.options.getString(`links`) || `None`,
+            },
+          ],
+        },
+      ],
       components: [
         new MessageActionRow().addComponents(
           new MessageButton()
@@ -47,6 +60,9 @@ export default defineSlashCommand({
             .setLabel("Approve")
         ),
       ],
+      allowedMentions: {
+        users: [],
+      },
     });
   },
   options: [
@@ -54,25 +70,13 @@ export default defineSlashCommand({
       name: "project",
       description: "The project you want to submit",
       type: "STRING",
-      choices: [
-        {
-          name: "Project 1",
-          value: "project1",
-        },
-        {
-          name: "Project 2",
-          value: "project2",
-        },
-        {
-          name: "Project 3",
-          value: "project3",
-        },
-        {
-          name: "Project 4",
-          value: "project4",
-        },
-      ],
       required: true,
+    },
+    {
+      name: "Links",
+      description: "Links to your project",
+      type: "STRING",
+      required: false,
     },
   ],
 });
