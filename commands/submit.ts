@@ -53,6 +53,7 @@ export default defineSlashCommand({
               `submit|${JSON.stringify({
                 User: ctx.interaction.user.id,
                 Project: ctx.interaction.options.getString(`project`),
+                github: ctx.interaction.options.getString(`username`),
               })}`
             )
             .setStyle("PRIMARY")

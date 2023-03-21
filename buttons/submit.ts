@@ -12,6 +12,7 @@ export default defineButtonHandler({
     const payload: {
       User: string;
       Project: string;
+      github: string;
     } = JSON.parse(ctx.payload!);
 
     //@ts-ignore
@@ -31,7 +32,7 @@ export default defineButtonHandler({
         });
       }
       await ctx.interaction.reply({
-        content: `Approved! points added to user <@${payload.User}> for project ${payload.Project}!`,
+        content: `Approved! points added to user <@${payload.User}> (<${payload.github}) for project ${payload.Project}!`,
         allowedMentions: {
           users: [],
         },
