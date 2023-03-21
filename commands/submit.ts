@@ -40,8 +40,8 @@ export default defineSlashCommand({
               value: ctx.interaction.options.getString(`project`)!,
             },
             {
-              name: `Links`,
-              value: ctx.interaction.options.getString(`links`) || `None`,
+              name: `GitHub`,
+              value: ctx.interaction.options.getString(`username`) || `None`,
             },
           ],
         },
@@ -73,10 +73,10 @@ export default defineSlashCommand({
       required: true,
     },
     {
-      name: "links",
-      description: "Links to your project",
+      name: "username",
+      description: "Your GitHub username",
       type: "STRING",
-      required: false,
+      required: true,
     },
   ],
 });
