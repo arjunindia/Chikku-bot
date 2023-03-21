@@ -32,7 +32,7 @@ export default defineButtonHandler({
         });
       }
       await ctx.interaction.reply({
-        content: `Approved! points added to user <@${payload.User}> (<${payload.github}) for project ${payload.Project}!`,
+        content: `Approved! points added to user <@${payload.User}> (${payload.github}) for project ${payload.Project}!`,
         allowedMentions: {
           users: [],
         },
