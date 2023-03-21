@@ -19,7 +19,7 @@ export default defineButtonHandler({
       // Add points to user
       try {
         await this.increment("points", {
-          by: 1,
+          by: 200,
           where: {
             user: payload.User,
           },
